@@ -4,10 +4,10 @@ import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import PlayerInput from './PlayerInput.js';
-import { addPlayer } from '../actions';
+import { addPlayer, startBidding } from '../actions';
 class CreatePlayers extends Component {
   render() {
-    var playerInputs = this.props.players.map((p,i) => <PlayerInput key={i} playerName={p} index={i}/> )
+    var playerInputs = this.props.players.map((p,i) => <PlayerInput key={i} player={p} index={i}/> )
     return (
       <div className="CreatePlayers">
         <Card>
@@ -21,7 +21,7 @@ class CreatePlayers extends Component {
             <Button dense onClick={this.props.onAdd} color="primary">
               Add
             </Button>
-            <Button raised dense color="primary">
+            <Button raised dense onClick={this.props.onStartBidding}  color="primary">
              Done
             </Button>
           </CardActions>
@@ -33,7 +33,7 @@ class CreatePlayers extends Component {
 
 const mapStateToProps = state => {
   return {
-    players: state.players
+    players: state.auction.players
   }
 }
 
@@ -41,6 +41,9 @@ const mapDispatchToProps = dispatch => {
   return {
     onAdd: () => {
       dispatch(addPlayer())
+    },
+    onStartBidding: () => { 
+      dispatch(startBidding())
     }
   }
 }

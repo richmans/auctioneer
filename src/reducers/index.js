@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import players from './players.js'
+import auction from './auction.js'
 const rootReducer = combineReducers({
-  'players': players
+  'auction': auction
 })
 
 export default rootReducer

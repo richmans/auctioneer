@@ -11,8 +11,9 @@ class PlayerInput extends Component {
       <Input
          placeholder="Your name"
          fullWidth
+         autoFocus
          margin="normal"
-         value={this.props.playerName}
+         value={this.props.player.name || ""}
          onChange={this.props.onUpdate} 
          endAdornment={
           <InputAdornment position="end">

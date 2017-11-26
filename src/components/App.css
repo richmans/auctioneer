@@ -9,3 +9,23 @@ div.main {
   margin-right:auto;
   margin-top:50px;
 }
+
+div.ResultItem {
+  margin-top:30px;
+  margin-bottom:30px;
+}
+div.ResultItem div.player-data{
+  display: inline-block;
+  width:80px;
+}
+
+div.ResultItem div.player-balance{
+  display: inline-block;
+  width:80px;
+}
+
+div.ResultItem div.player-bar {
+  display: inline-block;
+  min-width:400px;
+  height:10px;
+}

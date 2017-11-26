@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import CreatePlayers from './CreatePlayers.js';
+import Bid from './Bid.js';
+import Curtain from "./Curtain.js";
+import ResultScreen from "./ResultScreen.js";
 import { connect } from 'react-redux'
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
@@ -10,6 +13,21 @@ import MenuIcon from 'material-ui-icons/Menu';
 
 class App extends Component {
   render() {
+    var main;
+    switch(this.props.phase) {
+    case "bid":
+      main = <Bid/>
+      break;
+    case "curtain":
+      main = <Curtain/>
+      break;
+    case "result":
+      main = <ResultScreen/>
+      break;
+    default:
+      main = <CreatePlayers/>
+      break;
+    }
     return (
       <div className="App">
         <AppBar position='static'>
@@ -21,7 +39,7 @@ class App extends Component {
           </Toolbar>
         </AppBar>
         <div className='main'>
-          <CreatePlayers/>
+        {main}
         </div>
       </div>
     );
@@ -30,6 +48,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
+    phase: state.auction.phase
   }
 }
 

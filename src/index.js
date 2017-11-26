@@ -6,7 +6,9 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
-const store = createStore(reducer)
+import { devToolsEnhancer } from 'redux-devtools-extension';
+
+const store = createStore(reducer, devToolsEnhancer());
 ReactDOM.render(
   <Provider store={store}>
     <App />
